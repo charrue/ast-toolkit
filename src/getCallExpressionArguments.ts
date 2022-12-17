@@ -12,30 +12,31 @@ import { getNodeIdentifierName } from "./getNodeIdentifierName";
 export const getCallExpressionArguments = (
   source: string | Node,
   name: string,
-): Promise<any[] | undefined> => {
-  return new Promise((resolve) => {
-    let ast: Node;
-    if (typeof source === "string") {
-      if (!source.includes(name)) {
-        resolve(undefined);
-      }
-
-      ast = parse(source).program;
-    } else {
-      ast = source;
+): any[] | undefined => {
+  let ast: Node;
+  if (typeof source === "string") {
+    if (!source.includes(name)) {
+      return undefined;
     }
 
-    walk(ast, {
-      enter(node: Node) {
-        if (node.type === "CallExpression") {
-          const calleeName = getNodeIdentifierName(node);
+    ast = parse(source).program;
+  } else {
+    ast = source;
+  }
 
-          if (calleeName === name) {
-            const args = node.arguments.map(getLiteralNodeValue);
-            resolve(args);
-          }
+  let args;
+
+  walk(ast, {
+    enter(node: Node) {
+      if (node.type === "CallExpression") {
+        const calleeName = getNodeIdentifierName(node);
+
+        if (calleeName === name) {
+          args = node.arguments.map(getLiteralNodeValue);
         }
-      },
-    });
+      }
+    },
   });
+
+  return args;
 };
