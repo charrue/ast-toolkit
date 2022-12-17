@@ -129,5 +129,5 @@ import { getCallExpressionArguments } from "@charrue/ast-helper";
 const source = `const result = fun(1);
   console.log(result);`
 
-const result = await getCallExpressionArguments(source, "fun"); // [1]
+const result = getCallExpressionArguments(source, "fun"); // [1]
 ```
