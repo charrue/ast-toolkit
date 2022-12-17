@@ -1,6 +1,6 @@
 {
   "name": "@charrue/ast-toolkit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "AST操作辅助工具",
   "keywords": [
     "charrue",
