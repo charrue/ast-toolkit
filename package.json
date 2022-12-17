@@ -39,7 +39,6 @@
     "lint": "eslint src/**/*.ts --cache",
     "prepublishOnly": "npm run build",
     "prettier": "prettier --write src/**/*.ts",
-    "release": "bumpp --commit --push --tag && npm publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
@@ -52,7 +51,6 @@
     "@charrue/eslint-config-typescript": "latest",
     "@trivago/prettier-plugin-sort-imports": "^3.4.0",
     "@types/node": "^18.7.5",
-    "bumpp": "^8.2.1",
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
